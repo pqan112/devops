@@ -1,11 +1,21 @@
+# version: "3.8"
+# services:
+#   app:
+#     image: node:18.18-alpine
+#     command: sh -c "npm install && npm run serve"
+#     ports:
+#       - 3000:3000
+#     working_dir: /app
+#     volumes:
+#       - ./:/app
+#     restart: always
+
 version: "3.8"
 services:
   app:
-    image: node:18.18-alpine
-    command: sh -c "npm install && npm run serve"
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - 3000:3000
-    working_dir: /app
-    volumes:
-      - ./:/app
+      - "3000:80"
     restart: always
